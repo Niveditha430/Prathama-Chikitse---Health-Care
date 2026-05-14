@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "524940644989",
+    "project_id": "prathamachikitse",
+    "storage_bucket": "prathamachikitse.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:524940644989:android:cbf61e8a9513ac4ef05714",
+        "android_client_info": {
+          "package_name": "com.example.prathamachikitse"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdXHhzQZbyJGDs0m7DXqd4yc1uIZnVCyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
