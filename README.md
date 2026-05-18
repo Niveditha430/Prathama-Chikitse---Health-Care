@@ -10,20 +10,20 @@ Overall, Prathama Chikitse acts as a smart healthcare companion that combines te
 
 Tools:
 
-Android Studio
-GitHub
-Figma
+Android Studio,
+GitHub,
+Figma,
 Canva
 
 Technologies:
 
-Kotlin
-XML
-Jetpack Compose
-Firebase Authentication
-Firebase Firestore
-Google Maps API
-Gemini API
-Material Design
-REST API
+Kotlin,
+XML,
+Jetpack Compose,
+Firebase Authentication,
+Firebase Firestore,
+Google Maps API,
+Gemini API,
+Material Design,
+REST API,
 Gradle
