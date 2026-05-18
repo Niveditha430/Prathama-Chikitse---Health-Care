@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F8FAFC">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/tvGuideTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Emergency Guide"
+            android:textColor="#1E293B"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Dos Section -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            android:layout_marginBottom="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="#ECFDF5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="✅ DOs / ಮಾಡಿ"
+                    android:textColor="#059669"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvDosEn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="English instructions here"
+                    android:textColor="#064E3B"
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="4dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#D1FAE5"
+                    android:layout_marginVertical="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvDosKn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ಕನ್ನಡ ಸೂಚನೆಗಳು ಇಲ್ಲಿವೆ"
+                    android:textColor="#064E3B"
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="4dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Don'ts Section -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="#FEF2F2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="❌ DON'Ts / ಮಾಡಬೇಡಿ"
+                    android:textColor="#DC2626"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvDontsEn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="English warnings here"
+                    android:textColor="#7F1D1D"
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="4dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#FEE2E2"
+                    android:layout_marginVertical="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvDontsKn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ಕನ್ನಡ ಎಚ್ಚರಿಕೆಗಳು ಇಲ್ಲಿವೆ"
+                    android:textColor="#7F1D1D"
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="4dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnSpeakEn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="English Audio"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="#2563EB"
+                app:icon="@android:drawable/ic_btn_speak_now"/>
+
+            <Button
+                android:id="@+id/btnSpeakKn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="ಕನ್ನಡ ಧ್ವನಿ"
+                android:backgroundTint="#2563EB"
+                app:icon="@android:drawable/ic_btn_speak_now"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnClose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Close / ಮುಚ್ಚಿ"
+            android:layout_marginTop="12dp"
+            style="@style/Widget.Material3.Button.TextButton"/>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

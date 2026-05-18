@@ -1,75 +1,53 @@
 package com.example.prathamachikitse.auth
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.prathamachikitse.R
 import com.example.prathamachikitse.dashboard.DashboardActivity
-import com.example.prathamachikitse.utils.Constants
 
 class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_login)
 
-        val email = EditText(this)
-        val password = EditText(this)
-        val loginBtn = Button(this)
-        val register = TextView(this)
-        val forgot = TextView(this)
-        val intent = Intent(this, DashboardActivity::class.java)
-        startActivity(intent)
-
-        email.hint = "Email"
-        password.hint = "Password"
-        loginBtn.text = "Login"
-        register.text = "Create Account"
-        forgot.text = "Forgot Password?"
+        val email = findViewById<EditText>(R.id.emailEditText)
+        val password = findViewById<EditText>(R.id.passwordEditText)
+        val loginBtn = findViewById<Button>(R.id.loginButton)
+        val registerBtn = findViewById<TextView>(R.id.registerButton)
+        val forgotPassword = findViewById<TextView>(R.id.forgotPasswordText)
+        val googleBtn = findViewById<Button>(R.id.googleSignInButton)
 
         loginBtn.setOnClickListener {
-            if (email.text.toString() == Constants.demoEmail &&
-                password.text.toString() == Constants.demoPassword
-            ) {
+            val mail = email.text.toString().trim()
+            val pass = password.text.toString().trim()
+
+            // Bypassing login: accepts ANY email and password
+            if (mail.isNotEmpty() && pass.isNotEmpty()) {
+                Toast.makeText(this, "Login Successful (Bypassed)", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, DashboardActivity::class.java))
+                finish()
             } else {
-                Toast.makeText(this, "Invalid Credentials", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please enter any email and password to proceed", Toast.LENGTH_SHORT).show()
             }
         }
 
-        register.setOnClickListener {
+        registerBtn.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
 
-        forgot.setOnClickListener {
-            startActivity(Intent(this, ForgotPasswordActivity::class.java))
+        forgotPassword.setOnClickListener {
+            Toast.makeText(this, "Password reset link sent (Simulated)", Toast.LENGTH_SHORT).show()
         }
 
-        val layout = LinearLayout(this)
-        layout.orientation = LinearLayout.VERTICAL
-        layout.setPadding(40, 40, 40, 40)
-        layout.setBackgroundColor(Color.WHITE)
-        email.setPadding(20,20,20,20)
-        password.setPadding(20,20,20,20)
-
-        layout.addView(email)
-        layout.addView(password)
-        layout.addView(loginBtn)
-        layout.addView(register)
-        layout.addView(forgot)
-
-        setContentView(layout)
-        loginBtn.setOnClickListener {
-            FirebaseAuthHelper.login(
-                email.text.toString(),
-                password.text.toString()
-            ) { success ->
-                if (success) {
-                    startActivity(Intent(this, DashboardActivity::class.java))
-                } else {
-                    Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
-                }
-            }
+        googleBtn.setOnClickListener {
+            startActivity(Intent(this, DashboardActivity::class.java))
+            finish()
         }
     }
 }

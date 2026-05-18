@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/md_theme_background">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Emergency Quick Action"
+            app:titleTextColor="@color/md_theme_onSurface" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:padding="12dp"
+            android:alignmentMode="alignMargins">
+
+            <!-- Heart Attack -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnHeartAttack"
+                style="@style/EmergencyCard"
+                app:cardBackgroundColor="@color/cat_heart">
+                <LinearLayout style="@style/EmergencyCardContent">
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_first_aid"
+                        app:tint="@color/cat_heart_icon" />
+                    <TextView style="@style/EmergencyText"
+                        android:textColor="@color/cat_heart_icon"
+                        android:text="Heart Attack\nಹೃದಯಾಘಾತ" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Snake Bites -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnSnakeBite"
+                style="@style/EmergencyCard"
+                app:cardBackgroundColor="@color/cat_snake">
+                <LinearLayout style="@style/EmergencyCardContent">
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_hospital"
+                        app:tint="@color/cat_snake_icon" />
+                    <TextView style="@style/EmergencyText"
+                        android:textColor="@color/cat_snake_icon"
+                        android:text="Snake Bites\nಹಾವು ಕಡಿತ" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Fracture -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnFracture"
+                style="@style/EmergencyCard"
+                app:cardBackgroundColor="@color/cat_fracture">
+                <LinearLayout style="@style/EmergencyCardContent">
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_chart"
+                        app:tint="@color/cat_fracture_icon" />
+                    <TextView style="@style/EmergencyText"
+                        android:textColor="@color/cat_fracture_icon"
+                        android:text="Fracture\nಮೂಳೆ ಮುರಿತ" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Burns -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnBurns"
+                style="@style/EmergencyCard"
+                app:cardBackgroundColor="@color/cat_burns">
+                <LinearLayout style="@style/EmergencyCardContent">
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_patient"
+                        app:tint="@color/cat_burns_icon" />
+                    <TextView style="@style/EmergencyText"
+                        android:textColor="@color/cat_burns_icon"
+                        android:text="Burns\nಸುಟ್ಟ ಗಾಯ" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Choking -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnChoking"
+                style="@style/EmergencyCard"
+                app:cardBackgroundColor="@color/cat_choking">
+                <LinearLayout style="@style/EmergencyCardContent">
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_ai"
+                        app:tint="@color/cat_choking_icon" />
+                    <TextView style="@style/EmergencyText"
+                        android:textColor="@color/cat_choking_icon"
+                        android:text="Choking\nಉಸಿರುಕಟ್ಟುವಿಕೆ" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Bleeding -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnBleeding"
+                style="@style/EmergencyCard"
+                app:cardBackgroundColor="@color/cat_bleeding">
+                <LinearLayout style="@style/EmergencyCardContent">
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_medicine"
+                        app:tint="@color/cat_bleeding_icon" />
+                    <TextView style="@style/EmergencyText"
+                        android:textColor="@color/cat_bleeding_icon"
+                        android:text="Bleeding\nರಕ್ತಸ್ರಾವ" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Electric Shock -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnElectricShock"
+                style="@style/EmergencyCard"
+                app:cardBackgroundColor="@color/cat_shock">
+                <LinearLayout style="@style/EmergencyCardContent">
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_telemedicine"
+                        app:tint="@color/cat_shock_icon" />
+                    <TextView style="@style/EmergencyText"
+                        android:textColor="@color/cat_shock_icon"
+                        android:text="Electric Shock\nವಿದ್ಯುತ್ ಆಘಾತ" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Poisoning -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnPoisoning"
+                style="@style/EmergencyCard"
+                app:cardBackgroundColor="@color/cat_poison">
+                <LinearLayout style="@style/EmergencyCardContent">
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_appointment"
+                        app:tint="@color/cat_poison_icon" />
+                    <TextView style="@style/EmergencyText"
+                        android:textColor="@color/cat_poison_icon"
+                        android:text="Poisoning\nವಿಷಪೂರಿತ" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </GridLayout>
+    </ScrollView>
+</LinearLayout>

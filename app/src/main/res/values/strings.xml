@@ -1,3 +1,53 @@
 <resources>
-    <string name="app_name">PrathamaChikitse</string>
+    <string name="app_name">Prathama Chikitse</string>
+    <string name="default_web_client_id">524940644989-uub2517865p79s95u81r2r1g913m9v91.apps.googleusercontent.com</string>
+
+    <!-- Login/Register -->
+    <string name="welcome_back">Welcome Back</string>
+    <string name="login_to_continue">Login to your medical portal</string>
+    <string name="email_hint">Email Address</string>
+    <string name="password_hint">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="login_btn">SIGN IN</string>
+    <string name="new_user">New user? </string>
+    <string name="register_now">Register Now</string>
+    <string name="or_divider">─── OR ───</string>
+    <string name="google_sign_in">Sign in with Google</string>
+    <string name="create_account">Create Account</string>
+    <string name="full_name_hint">Full Name</string>
+    <string name="register_btn">REGISTER</string>
+    <string name="already_have_account">Already have an account? Sign In</string>
+
+    <!-- Dashboard -->
+    <string name="emergency_guides">Emergency Guides</string>
+    <string name="patient_records">Patient Records</string>
+    <string name="my_medicines">My Medicines</string>
+    <string name="hospital_map">Hospital Map</string>
+    <string name="ai_assistant">AI Health Assistant</string>
+    <string name="health_vitals">Health Vital Status</string>
+    <string name="appointments">Doctor Visits</string>
+    <string name="telehealth">Telehealth Expert</string>
+    <string name="dashboard_subtitle">Your Health, Our Priority</string>
+
+    <!-- Emergency Categories -->
+    <string name="heart_attack">Heart Attack\nಹೃದಯಾಘಾತ</string>
+    <string name="snake_bite">Snake Bites\nಹಾವು ಕಡಿತ</string>
+    <string name="fracture">Fracture\nಮೂಳೆ ಮುರಿತ</string>
+    <string name="burns">Burns\nಸುಟ್ಟ ಗಾಯ</string>
+    <string name="choking">Choking\nಉಸಿರುಕಟ್ಟುವಿಕೆ</string>
+    <string name="bleeding">Bleeding\nರಕ್ತಸ್ರಾವ</string>
+    <string name="electric_shock">Electric Shock\nವಿದ್ಯುತ್ ಆಘಾತ</string>
+    <string name="poisoning">Poisoning\nವಿಷಪೂರಿತ</string>
+
+    <!-- Patient Profile -->
+    <string name="edit_profile">Edit Patient Profile</string>
+    <string name="patient_name">Patient Name</string>
+    <string name="blood_group">Blood Group</string>
+    <string name="condition">Condition</string>
+    <string name="doctor">Doctor</string>
+    <string name="emergency_contact">Emergency Contact</string>
+    <string name="caretaker">Caretaker</string>
+    <string name="medicines_list">Prescribed Medicines</string>
+    <string name="save_profile">SAVE PROFILE &amp; SYNC</string>
+    <string name="ai_fill">AI AUTO-FILL</string>
 </resources>

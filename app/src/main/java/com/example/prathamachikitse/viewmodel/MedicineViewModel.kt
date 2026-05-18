@@ -22,7 +22,21 @@ class MedicineViewModel : ViewModel() {
         }
     }
 
-    fun addMedicine(name: String) {
-        repo.run { addMedicine(name) }
+    fun addMedicine(name: String, dosage: String = "", stock: Int = 10) {
+        viewModelScope.launch {
+            repo.addMedicine(Medicine(name = name, dosage = dosage, stock = stock))
+        }
+    }
+
+    fun toggleTaken(medicineId: String, isTaken: Boolean) {
+        viewModelScope.launch {
+            repo.toggleMedicineTaken(medicineId, isTaken)
+        }
+    }
+
+    fun updateStock(medicineId: String, newStock: Int) {
+        viewModelScope.launch {
+            repo.updateStock(medicineId, newStock)
+        }
     }
 }

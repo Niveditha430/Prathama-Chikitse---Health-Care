@@ -1,35 +1,75 @@
 package com.example.prathamachikitse.auth
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.*
+import android.util.Patterns
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.prathamachikitse.R
+import com.example.prathamachikitse.dashboard.DashboardActivity
+import com.google.firebase.auth.FirebaseAuth
 
 class RegisterActivity : AppCompatActivity() {
 
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_register)
 
-        val email = EditText(this)
-        val password = EditText(this)
-        val btn = Button(this)
+        auth = FirebaseAuth.getInstance()
 
-        email.hint = "New Email"
-        password.hint = "New Password"
-        btn.text = "Register"
+        val name = findViewById<EditText>(R.id.nameEditText)
+        val email = findViewById<EditText>(R.id.registerEmail)
+        val password = findViewById<EditText>(R.id.registerPassword)
+        val registerBtn = findViewById<Button>(R.id.registerBtn)
+        val loginBackBtn = findViewById<TextView>(R.id.loginBackBtn)
 
-        btn.setOnClickListener {
-            Toast.makeText(this, "Account Created (Demo)", Toast.LENGTH_SHORT).show()
-            finish()
+        registerBtn.setOnClickListener {
+            val nameStr = name.text.toString().trim()
+            val mail = email.text.toString().trim()
+            val pass = password.text.toString().trim()
+
+            if (validateInputs(nameStr, mail, pass)) {
+                auth.createUserWithEmailAndPassword(mail, pass)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Welcome, $nameStr! Account Created.", Toast.LENGTH_LONG).show()
+                        startActivity(Intent(this, DashboardActivity::class.java))
+                        finishAffinity()
+                    }
+                    .addOnFailureListener { e ->
+                        val errorMsg = if (e.message?.contains("CONFIGURATION_NOT_FOUND") == true) {
+                            "Auth Error: Please enable Email/Password in Firebase Console."
+                        } else {
+                            "Registration Failed: ${e.localizedMessage}"
+                        }
+                        Toast.makeText(this, errorMsg, Toast.LENGTH_LONG).show()
+                    }
+            }
         }
 
-        val layout = LinearLayout(this)
-        layout.orientation = LinearLayout.VERTICAL
-        layout.setPadding(40, 40, 40, 40)
+        loginBackBtn.setOnClickListener { finish() }
+    }
 
-        layout.addView(email)
-        layout.addView(password)
-        layout.addView(btn)
-
-        setContentView(layout)
+    private fun validateInputs(name: String, emailStr: String, passStr: String): Boolean {
+        if (name.isEmpty()) {
+            Toast.makeText(this, "Enter your full name", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (emailStr.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailStr).matches()) {
+            Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        
+        // Complex Password Pattern: 8+ chars, Uppercase, Lowercase, Number, Special Character
+        val passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$".toRegex()
+        if (!passwordPattern.matches(passStr)) {
+            Toast.makeText(this, "Password must be 8+ chars with Uppercase, Lowercase, Number, and Special character (@#$%^&+=!)", Toast.LENGTH_LONG).show()
+            return false
+        }
+        return true
     }
 }

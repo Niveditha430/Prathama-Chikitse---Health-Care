@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.prathamachikitse.R
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
@@ -13,84 +14,62 @@ import com.google.mlkit.vision.text.latin.TextRecognizerOptions
 class PatientActivity : AppCompatActivity() {
 
     private val CAMERA_REQ = 200
-
     private lateinit var resultText: TextView
     private lateinit var scanBtn: Button
+    private lateinit var addBtn: Button
+    private var detectedMedicine: String = ""
+    private var detectedDosage: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_patient)
 
-        val layout = LinearLayout(this)
-        layout.orientation = LinearLayout.VERTICAL
-        layout.setPadding(30, 30, 30, 30)
-
-        val title = TextView(this)
-        title.text = "💊 Medicine Scanner"
-        title.textSize = 20f
-
-        scanBtn = Button(this)
-        scanBtn.text = "📸 Scan Medicine"
-
-        resultText = TextView(this)
-        resultText.text = "Detected medicine will appear here"
-        resultText.textSize = 16f
+        resultText = findViewById(R.id.resultText)
+        scanBtn = findViewById(R.id.scanBtn)
+        addBtn = findViewById(R.id.addBtn)
 
         scanBtn.setOnClickListener {
-            try {
-                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                startActivityForResult(intent, CAMERA_REQ)
-            } catch (e: Exception) {
-                Toast.makeText(this, "Camera not available", Toast.LENGTH_SHORT).show()
-            }
+            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivityForResult(intent, CAMERA_REQ)
         }
 
-        layout.addView(title)
-        layout.addView(scanBtn)
-        layout.addView(resultText)
-
-        setContentView(layout)
+        addBtn.setOnClickListener {
+            if (detectedMedicine.isNotEmpty()) {
+                // Here we would normally save to database, for now we show a success message
+                Toast.makeText(this, "Saved: $detectedMedicine - $detectedDosage", Toast.LENGTH_LONG).show()
+                finish()
+            }
+        }
     }
 
-    @Deprecated("Deprecated in Java")
-    override fun onActivityResult(
-        requestCode: Int,
-        resultCode: Int,
-        data: Intent?
-    ) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
         if (requestCode == CAMERA_REQ && resultCode == RESULT_OK) {
-
             val bitmap = data?.extras?.get("data") as? Bitmap
-
-            if (bitmap != null) {
-                processImage(bitmap)
-            } else {
-                Toast.makeText(this, "Image capture failed", Toast.LENGTH_SHORT).show()
-            }
+            bitmap?.let { processImage(it) }
         }
     }
 
     private fun processImage(bitmap: Bitmap) {
-
         val image = InputImage.fromBitmap(bitmap, 0)
         val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
-
-        resultText.text = "Scanning..."
+        resultText.text = "Scanning for medicine and dosage..."
 
         recognizer.process(image)
             .addOnSuccessListener { visionText ->
-
-                val detectedText = visionText.text
-
-                if (detectedText.isEmpty()) {
-                    resultText.text = "No text found"
+                val lines = visionText.text.split("\n")
+                if (lines.isNotEmpty()) {
+                    detectedMedicine = lines[0] // Assume first line is medicine name
+                    detectedDosage = if (lines.size > 1) lines[1] else "Dosage not found"
+                    
+                    resultText.text = "Medicine: $detectedMedicine\nDosage: $detectedDosage"
+                    addBtn.isEnabled = true
                 } else {
-                    resultText.text = "Detected:\n\n$detectedText"
+                    resultText.text = "No text found. Please scan the label clearly."
                 }
             }
             .addOnFailureListener {
-                resultText.text = "Scan failed"
+                resultText.text = "Error: ${it.message}"
             }
     }
 }

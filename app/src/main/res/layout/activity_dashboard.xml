@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_premium">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Dashboard"
+            app:titleTextColor="@color/primary_brand"
+            app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Banner stays fixed at top of content area but scrolls with list -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginBottom="8dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/login_bg_shape" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#60000000" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Welcome to\nPrathama Chikitse"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:gravity="center" />
+            </FrameLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:padding="12dp"
+                android:alignmentMode="alignMargins">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardEmergency"
+                    style="@style/DashboardCard"
+                    app:cardBackgroundColor="@color/cat_heart_icon">
+                    <LinearLayout style="@style/DashboardCardContent">
+                        <ImageView
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:src="@drawable/ic_first_aid"
+                            app:tint="@color/white" />
+                        <TextView
+                            style="@style/DashboardCardTitle"
+                            android:text="Emergency Guides" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardPatient"
+                    style="@style/DashboardCard"
+                    app:cardBackgroundColor="@color/cat_snake_icon">
+                    <LinearLayout style="@style/DashboardCardContent">
+                        <ImageView
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:src="@drawable/ic_patient"
+                            app:tint="@color/white" />
+                        <TextView
+                            style="@style/DashboardCardTitle"
+                            android:text="Patient History" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardMedicine"
+                    style="@style/DashboardCard"
+                    app:cardBackgroundColor="@color/primary_brand">
+                    <LinearLayout style="@style/DashboardCardContent">
+                        <ImageView
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:src="@drawable/ic_medicine"
+                            app:tint="@color/white" />
+                        <TextView
+                            style="@style/DashboardCardTitle"
+                            android:text="My Medicines" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardAI"
+                    style="@style/DashboardCard"
+                    app:cardBackgroundColor="@color/cat_poison_icon">
+                    <LinearLayout style="@style/DashboardCardContent">
+                        <ImageView
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:src="@drawable/ic_ai"
+                            app:tint="@color/white" />
+                        <TextView
+                            style="@style/DashboardCardTitle"
+                            android:text="AI Assistant" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardMap"
+                    style="@style/DashboardCard"
+                    app:cardBackgroundColor="@color/dash_map_icon">
+                    <LinearLayout style="@style/DashboardCardContent">
+                        <ImageView
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:src="@drawable/ic_hospital"
+                            app:tint="@color/white" />
+                        <TextView
+                            style="@style/DashboardCardTitle"
+                            android:text="Nearby Hospitals" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardTelemedicine"
+                    style="@style/DashboardCard"
+                    app:cardBackgroundColor="@color/dash_telehealth_icon">
+                    <LinearLayout style="@style/DashboardCardContent">
+                        <ImageView
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:src="@drawable/ic_telemedicine"
+                            app:tint="@color/white" />
+                        <TextView
+                            style="@style/DashboardCardTitle"
+                            android:text="Telemedicine" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardAppointment"
+                    style="@style/DashboardCard"
+                    app:cardBackgroundColor="@color/dash_appointments_icon">
+                    <LinearLayout style="@style/DashboardCardContent">
+                        <ImageView
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:src="@drawable/ic_appointment"
+                            app:tint="@color/white" />
+                        <TextView
+                            style="@style/DashboardCardTitle"
+                            android:text="Appointments" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </GridLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
